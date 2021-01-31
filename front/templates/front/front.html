@@ -1,0 +1,25 @@
+{% extends "front/base.html" %}
+{% block content %}
+
+
+    {% for listings in listings %}
+        <article id="post">
+            <h1>{{listings.author}}</h1>
+            <div id="flex">
+                <div id="first">
+                    <h2>{{ listings.title}}</h2>
+                    <p>{{listings.content}}</p>
+                </div>
+                <div id="swap">
+                    <h2>Trade for</h2>
+                </div>
+                <div id="second">
+                    <h2>{{ listings.title2}}</h2>
+                    <p>{{listings.content2}}</p>
+                </div>
+            </div>
+            <h3>{{listings.date_posted}}</h3>
+        </article>       
+    {% endfor %}
+
+{% endblock content %}
