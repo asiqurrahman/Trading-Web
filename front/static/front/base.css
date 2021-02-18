@@ -23,8 +23,9 @@ nav {
     color: #66FCf1;
     text-transform: uppercase;
     letter-spacing: 5px;
-    font-size: 20px;
+    font-size: 20px;    
 }
+
 
 .nav-links{
     display: flex;
@@ -35,6 +36,7 @@ nav {
 .nav-links li{
     list-style: none;
 }
+
 .nav-links a {
     color: #66FCf1;
     text-decoration: none;
@@ -75,7 +77,7 @@ nav {
 #swap {
     display: flex;
     align-items: center;
-    color: blue;
+    color: red;
 }
 
 #post h1 {

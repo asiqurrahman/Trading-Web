@@ -18,8 +18,9 @@
                     <p>{{listings.content2}}</p>
                 </div>
             </div>
-            <h3>{{listings.date_posted}}</h3>
+            <h3>{{listings.date_posted|date:"F d, Y" }}</h3>
         </article>       
     {% endfor %}
-
+                                                
 {% endblock content %}
+  

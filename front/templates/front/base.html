@@ -15,21 +15,27 @@
 <body>
     <nav>
         <div class="logo">
-            <h4>The Nav</h4>
+            <h4><a href="{% url 'front' %}">The Navbar</a></h4>
         </div>
         <ul class='nav-links'>
             <li>
-                <a href="#">Home</a>
+                <a href="{% url 'front' %}">Home</a>
             </li>
             <li>
-                <a href="#">About</a>
+                <a href="{% url 'about' %}">About</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'login' %}">Login</a>
             </li>
             <li>
-                <a href="#">Login</a>
+                <a href="{% url 'register' %}">Register</a>
             </li>
-            <li>
-                <a href="#">Logout</a>
-            </li>
+            {% endif %}
         </ul>
         <div class="burger">
             <div class="line1"></div>
@@ -39,6 +45,13 @@
     </nav>
     
     <div class="container">
+        {% if messages %}
+            {% for message in messages%}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor%}
+        {% endif %}
         {% block content%}{% endblock %} 
     </div>
     
