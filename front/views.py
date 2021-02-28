@@ -14,10 +14,9 @@ def home(request):
 def about(request):
     
     number_of_users = User.objects.all()
-    x = 0
+    x = User.objects.count()
 
-    for i in number_of_users:
-        x+=1
+    
     
     number_of_users2 ={
         'car' : number_of_users,
