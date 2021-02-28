@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Post
+from django.contrib.auth.models import User
+
 
 
 
@@ -10,7 +12,17 @@ def home(request):
     return render(request, 'front/front.html',  postings)
 
 def about(request):
-    postings = {
-        'listings' : Post.objects.all()
+    
+    number_of_users = User.objects.all()
+    x = 0
+
+    for i in number_of_users:
+        x+=1
+    
+    number_of_users2 ={
+        'car' : number_of_users,
+        'count' : x
     }
-    return render(request, 'front/about.html', postings )
+
+    return render(request, 'front/about.html', number_of_users2)
+
