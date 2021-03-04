@@ -3,6 +3,7 @@
 
 
     {% for listings in listings %}
+    <a href="{% url 'post-detail' listings.id %}">
         <article id="post">
             <h1>{{listings.author}}</h1>
             <div id="flex">
@@ -19,7 +20,16 @@
                 </div>
             </div>
             <h3>{{listings.date_posted|date:"F d, Y" }}</h3>
-        </article>       
+            <img class="rounded-circle" src="{{ listings.author.profile.image.url }}" height="200" width="200">
+        </article> 
+    </a>
+
+    <style> 
+        a:hover { 
+            text-decoration: none; 
+        } 
+    </style> 
+    
     {% endfor %}
                                                 
 {% endblock content %}
