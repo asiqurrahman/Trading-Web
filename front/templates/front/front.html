@@ -5,22 +5,20 @@
     {% for listings in listings %}
     <a href="{% url 'post-detail' listings.id %}">
         <article id="post">
-            <h1>{{listings.author}}</h1>
             <div id="flex">
                 <div id="first">
                     <h2>{{ listings.title}}</h2>
-                    <p>{{listings.content}}</p>
+                    <img class="object-fit-cover" src="{{listings.post_image.url }}">
                 </div>
                 <div id="swap">
                     <h2>Trade for</h2>
                 </div>
                 <div id="second">
                     <h2>{{ listings.title2}}</h2>
-                    <p>{{listings.content2}}</p>
+                    <img class="object-fit-cover" src="{{ listings.post_image2.url }}">
                 </div>
             </div>
             <h3>{{listings.date_posted|date:"F d, Y" }}</h3>
-            <img class="rounded-circle" src="{{ listings.author.profile.image.url }}" height="200" width="200">
         </article> 
     </a>
 

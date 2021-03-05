@@ -3,6 +3,7 @@ from .models import Post
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from PIL import Image
 
 
 
@@ -25,7 +26,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'post_image', 'title2', 'content2', 'post_image2']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -57,13 +58,21 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     
 
 
+
+
+
+
+
+
+
+
+
+
+
 def about(request):
-    
     
     x = User.objects.count()
 
-
-    
     number_of_users2 ={
         
         'count' : x
