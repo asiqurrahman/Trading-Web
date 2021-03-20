@@ -109,6 +109,11 @@ nav {
     padding: 30px;
 }
 
+#third {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 
 

@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+import requests 
+from requests import get
+from .models import Profile
+
 
 def register(request):
     if request.method == 'POST':
@@ -31,6 +35,6 @@ def profile(request):
 
     context = {
         'u_form' : u_form,
-        'p_form' : p_form
+        'p_form' : p_form   
     }
     return render(request, 'users/profile.html', context)

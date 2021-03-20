@@ -18,7 +18,10 @@
                     <img class="object-fit-cover" src="{{ listings.post_image2.url }}">
                 </div>
             </div>
-            <h3>{{listings.date_posted|date:"F d, Y" }}</h3>
+            <div id="third">
+                <h3>{{listings.date_posted|date:"F d, Y" }}</h3>
+                <h3>{{listings.author.profile.location}}</h3>
+            </div>
         </article> 
     </a>
 

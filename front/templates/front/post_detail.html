@@ -22,7 +22,9 @@
                 <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
              </div>
             {% endif %}
+            <h1>{{ object.location }}</h1>
             <img class="rounded-circle" src="{{ object.author.profile.image.url }}" height="200" width="200">
+            
         </article>                                                    
 {% endblock content %}
   
