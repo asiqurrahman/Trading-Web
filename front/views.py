@@ -91,12 +91,12 @@ def about(request):
         return ip
     
     ip = (get_ip_address(request))
-    #loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
-    #loc = get('https://ipapi.co/{}/country/'.format(ip))
-    #address = loc.json()
-    #city = address['city']
-    #region = address['region']
-    #area = city + ", " + region
+    loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
+    loc = get('https://ipapi.co/{}/json/'.format(ip))
+    address = loc.json()
+    city = address['city']
+    region = address['region']
+    area = city + ", " + region
     
 
 
@@ -106,7 +106,7 @@ def about(request):
     number_of_users2 ={
         
         'count' : x,
-        'location' : ip
+        'location' : area
     
     }
 
