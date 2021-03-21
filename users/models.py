@@ -4,20 +4,23 @@ from PIL import Image
 from django.utils import timezone
 import requests 
 from requests import get
+from front.views import about
 
 
 class Profile(models.Model):
 
-    area = "yap"
-
+    ip = "placeholder"
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    location = models.CharField(max_length=100, default=area)
+    location = models.CharField(max_length=100, default=ip)
 
    
 
     def __str__(self):
         return f'{self.user.username} Profile'
+    
+    
+
 
 
 
