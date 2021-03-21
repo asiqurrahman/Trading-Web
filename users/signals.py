@@ -8,10 +8,10 @@ from requests import get
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
+    
 
-    area = "testing"
     if created:
-        Profile.objects.create(user=instance, location=area)
+        Profile.objects.create(user=instance)
         
 
 @receiver(post_save, sender=User)

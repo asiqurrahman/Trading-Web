@@ -80,8 +80,8 @@ def about(request):
     x = User.objects.count()
     
 
-    #current = request.user.profile.location\
-    
+    #current = request.user.profile.location
+
     def get_ip_address(request):
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
@@ -92,17 +92,14 @@ def about(request):
     
     ip = (get_ip_address(request))
     loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
-    loc = get('https://ipapi.co/{}/json/'.format(ip))
+    loc = get('https://ipapi.co/72.76.225.203/json/')#.format(ip))
     address = loc.json()
     city = address['city']
     region = address['region']
     area = city + ", " + region
+
+     
     
-
-
-            
-
-
     number_of_users2 ={
         
         'count' : x,
