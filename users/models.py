@@ -4,7 +4,7 @@ from PIL import Image
 from django.utils import timezone
 import requests 
 from requests import get
-
+from .utils import get_ip_address
 
 class Profile(models.Model):
 
@@ -14,9 +14,8 @@ class Profile(models.Model):
     location = models.CharField(max_length=100, default=area)
 
    
-
-  
-
+    def save(self, request, *args, **kwargs):
+        self.location = get_ip_address(request)
 
     def __str__(self):
         return f'{self.user.username} Profile'
