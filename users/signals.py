@@ -8,23 +8,23 @@ from requests import get
 
 @receiver(post_save, sender=User)
 def create_profile(sender, request, instance, created, **kwargs):
-    def get_ip_address(request):
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        return ip
-    
-    ip = (get_ip_address(request))
-    loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
-    loc = get('https://ipapi.co/72.76.225.203/json/')#.format(ip))
-    address = loc.json()
-    city = address['city']
-    region = address['region']
-    area = city + ", " + region
     if created:
-        Profile.objects.create(user=instance, location=area)
+        def get_ip_address(request):
+            x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+            if x_forwarded_for:
+                ip = x_forwarded_for.split(',')[0]
+            else:
+             ip = request.META.get('REMOTE_ADDR')
+            return ip
+    
+        ip = (get_ip_address(request))
+        loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
+        loc = get('https://ipapi.co/72.76.225.203/json/')#.format(ip))
+        address = loc.json()
+        city = address['city']
+        region = address['region']
+        area = city + ", " + region
+    Profile.objects.create(user=instance, location=area)
         
 
 @receiver(post_save, sender=User)
