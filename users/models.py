@@ -16,6 +16,7 @@ class Profile(models.Model):
    
     def save(self, request, *args, **kwargs):
         self.location = get_ip_address(request)
+        super(Profile, self).save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.user.username} Profile'
