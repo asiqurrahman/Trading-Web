@@ -6,7 +6,6 @@ import requests
 from requests import get
 
 
-
 class Profile(models.Model):
 
     area = "placeholder"
@@ -15,6 +14,9 @@ class Profile(models.Model):
     location = models.CharField(max_length=100, default=area)
 
    
+
+  
+
 
     def __str__(self):
         return f'{self.user.username} Profile'

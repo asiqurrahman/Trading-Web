@@ -6,7 +6,6 @@ from PIL import Image
 
 
 
-
 class Post(models.Model):
     title = models.CharField(max_length=100)
     title2 = models.CharField( max_length=100)

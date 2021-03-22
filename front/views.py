@@ -90,7 +90,7 @@ def about(request):
             ip = request.META.get('REMOTE_ADDR')
         return ip
     
-    ip = (get_ip_address(request))
+    ip = get_ip_address(request)
     loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
     loc = get('https://ipapi.co/72.76.225.203/json/')#.format(ip))
     address = loc.json()
