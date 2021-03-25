@@ -4,7 +4,7 @@ from PIL import Image
 from django.utils import timezone
 import requests
 from requests import get
-from .utils import get_ip_address
+
 
 
 
