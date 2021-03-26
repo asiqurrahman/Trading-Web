@@ -2,11 +2,12 @@
 {% extends "front/base.html" %}
 {% block content %}
  
-    <h1>HELLO THERE </h1>
-
-    
+        {% if location == "Jersey City, New Jersey" %}
         <h1>You are currently in {{location}} </h1>
-        <h1>You are currently in {{location}} </h1>       
+        <h1>You are currently in {{location}} </h1>
+        {% else %}
+        <h1>You are currently in {{location}} </h1>
+        {% endif %}      
     
 
 

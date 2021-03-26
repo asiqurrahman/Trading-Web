@@ -92,7 +92,7 @@ def about(request):
     
     ip = get_ip_address(request)
     loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
-    loc = get('https://ipapi.co/72.76.225.203/json/')#.format(ip))
+    loc = get('https://ipapi.co/{ip}/json/').format(ip)
     address = loc.json()
     city = address['city']
     region = address['region']
