@@ -3,25 +3,31 @@
 {% block content %}
 
 <div class="content-section">
-    <div class="media">
-      <img src="{{ user.profile.image.url }}" width="300" height="300">
-      <div class="media-body">
-        <h2 class="account-heading">{{ user.username }}</h2>
-        <p class="text-secondary">{{ user.email }}</p>
-        <p class="text-secondary">{{ user.profile.location }}</p>
+    <div id="profilecontent">
+      <div class="media">
+        <img src="{{ user.profile.image.url }}" width="300" height="300" alt="Avatar">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <h3>{{final_location}}</h3>
+        
+        </div>
       </div>
-    </div>
-    <form method="POST" enctype='multipart/form-data'>
-      {% csrf_token %}
-      <fieldset class="form-group">
-          <legend class="border-bottom mb-4">Profile Info</legend>
-          {{ u_form | crispy }}
-          {{ p_form | crispy }}
-      </fieldset>
-      <div class="form-group">
+      <form method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Info</legend>
+               {{ u_form | crispy }}
+               {{ p_form.image| as_crispy_field }} 
+             <h4 >Update your Location</h4>
+             <h6 class="text-secondary">Please enter a valid U.S zipcode </h6>
+ 
+                  {{ p_form.location| as_crispy_field }}   
+        </fieldset>
+        <div class="form-group">
           <button class="wbtn btn-outline-info" type="submit">Update</button>
-      </div>
-  </form>
+        </div>
+      </form>
+    </div>
   </div> 
 
 

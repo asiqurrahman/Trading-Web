@@ -2,9 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
-import requests 
+import requests
 from requests import get
 from .models import Profile
+import zipcodes
+
+
 
 
 def register(request):
@@ -32,9 +35,30 @@ def profile(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
+    
+   
+   
+    
+    
+    location = request.user.profile.location
+
+
+    if location is None:
+        final_location ="Please Enter Your Zipcode -->"
+    else:   
+        zipcode = request.user.profile.location
+        user_location = zipcodes.matching('{}'.format(zipcode))
+        city = user_location[0]['city']
+        state = user_location[0]['state']
+        final_location = city + ',' + ' ' + state
+    
+    
+    
+    
 
     context = {
         'u_form' : u_form,
-        'p_form' : p_form   
+        'p_form' : p_form ,
+        'final_location' : final_location  
     }
     return render(request, 'users/profile.html', context)

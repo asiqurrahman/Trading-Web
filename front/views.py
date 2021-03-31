@@ -19,6 +19,8 @@ def home(request):
     return render(request, 'front/front.html',  postings)
 
 
+
+
 class PostListView(ListView):
     model = Post
     template_name = 'front/front.html'
@@ -92,20 +94,38 @@ def about(request):
     
     ip = get_ip_address(request)
     loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
-    loc = get('https://ipapi.co/{}/json/'.format(ip))
+    loc = get('https://ipapi.co/72.76.225.203/json/')#.format(ip))    
     address = loc.json()
     city = address['city']
     region = address['region']
     area = city + ", " + region
 
-     
+    
+       
+    check_for_zipcode =  request.user.profile.location
+  
+    test = 10
     
     number_of_users2 ={
         
         'count' : x,
-        'location' : area
+        'location' : area,
+        'check_for_zipcode' : check_for_zipcode,
+        'test' : test 
     
     }
 
-    return render(request, 'front/about.html', number_of_users2)
+    return render(request, 'front/about.html',  number_of_users2)
+
+
+def zip(request):
+
+    check_for_zipcode = request.user.profile.location
+    yap = 10
+
+    zipcodes = {
+        'check_for_zipcode' : check_for_zipcode,
+         'yap' : yap
+    }
+    return render(request, 'front/post_form.html',  zipcodes)
 

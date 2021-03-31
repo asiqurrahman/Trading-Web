@@ -15,8 +15,7 @@ nav {
     min-height: 8vh;
     background-color:#1f2833;
     font-family: 'Poppins', sans-serif;
-    
-     
+ 
 }
 
 .logo{
@@ -114,6 +113,50 @@ nav {
     justify-content: space-between;
 }
 
+#profilecontent {
+    background-color: #1f2833;
+    display: flex;
+    color: #66FCf1;
+    margin-top: 7vh;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5),
+            10px 10px 15px rgba(0,0,0,0.5),
+            -1px -1px 30px rgba(0,0,0,0.2);
+}
+
+#profilecontent img{
+    border-radius: 50%;
+    margin-top: 2vw;
+}
+
+#profilecontent .media{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.media h2 {
+    margin-top: 2vh;
+    font-size: 60px;
+    margin-left: 4vw;
+}
+
+.media h3 {
+    margin-top: 5vh;
+
+    margin-left: 4vw;
+}
+
+.form-group h4 {
+    font-size: 20px;
+
+}
+
+
+
+
 
 
 
@@ -181,4 +224,3 @@ nav {
 .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
 }
-

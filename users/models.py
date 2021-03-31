@@ -9,12 +9,17 @@ from requests import get
 
 
 
+
+
+
+
 class Profile(models.Model):
     
-    area = "placeholder"
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    location = models.CharField(max_length=100, default=area)
+    location = models.CharField(null=True, blank=True, max_length=5)
+
+    
     
 
 
@@ -22,6 +27,11 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
     
+   
+
+
+
+
     
 
 
