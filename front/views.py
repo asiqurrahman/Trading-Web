@@ -105,19 +105,11 @@ def about(request):
 
     
        
-    check_for_zipcode =  request.user.profile.location
-    
-
-    
-    
-    
-   
-    
     number_of_users2 ={
         
         'count' : x,
-        'location' : area,
-        'check_for_zipcode' : check_for_zipcode
+        'location' : area
+        
     
     }
 
