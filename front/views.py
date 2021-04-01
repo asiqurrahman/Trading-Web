@@ -7,18 +7,19 @@ from PIL import Image
 import requests 
 from requests import get
 from users.models import Profile
+import zipcodes
 
 
 
+#def home(request):
 
-def home(request):
+    #final_location = 10
 
-    postings = {
-        'listings' : Post.objects.all()
-    }
-    return render(request, 'front/front.html',  postings)
-
-
+    #postings = {
+        #'listings' : Post.objects.all(),
+        #'final_location' : final_location
+    #}
+    #return render(request, 'front/front.html',  postings)
 
 
 class PostListView(ListView):
@@ -30,6 +31,8 @@ class PostListView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
+
+    
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -103,19 +106,34 @@ def about(request):
     
        
     check_for_zipcode =  request.user.profile.location
-  
-    test = 10
+    
+
+    
+    
+    
+   
     
     number_of_users2 ={
         
         'count' : x,
         'location' : area,
-        'check_for_zipcode' : check_for_zipcode,
-        'test' : test 
+        'check_for_zipcode' : check_for_zipcode
     
     }
 
     return render(request, 'front/about.html',  number_of_users2)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def zip(request):

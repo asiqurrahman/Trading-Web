@@ -17,12 +17,12 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta: 
         model = User
-        fields = ['username' , 'email',]
+        fields = ['username' , 'email']
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image' , 'location']
+        fields = ['image' , 'location', 'detail_location']
 
     def clean_location(self, *args, **kwargs):
         location = self.cleaned_data.get("location")
@@ -38,3 +38,15 @@ class ProfileUpdateForm(forms.ModelForm):
                 raise forms.ValidationError("Please Enter A Valid ZipCode")
         else:
             raise forms.ValidationError("Please Enter A Valid ZipCode")
+    
+    def clean_detail_location(self, *args, **kwargs):
+        detail_location = self.cleaned_data.get("location")
+
+        if detail_location:
+            zipcode = detail_location
+            user_location = zipcodes.matching('{}'.format(zipcode))
+            city = user_location[0]['city']
+            state = user_location[0]['state']
+            detail_location = city + ',' + ' ' + state
+            return detail_location
+           
