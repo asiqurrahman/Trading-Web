@@ -2,11 +2,43 @@
 {% extends "front/base.html" %}
 {% block content %}
  
-       
-        <h1 name="username">You are currently in {{location}} </h1>
-        
-      
-     
+
+<form class="add_your_class" method="GET" action="" >
+    <input class="add_your_class" type="search" name="search"> 
+    <button class="add_your_class" type="submit"> Search </button>
+</form>
+
+
+    {% for listings in listings %}
+    <a href="{% url 'post-detail' listings.id %}">
+        <article id="post">
+            <div id="flex">
+                <div id="first">
+                    <h2>{{ listings.title}}</h2>
+                    <img class="object-fit-cover" src="{{listings.post_image.url }}">
+                </div>
+                <div id="swap">
+                    <h2>Trade for</h2>
+                </div>
+                <div id="second">
+                    <h2>{{ listings.title2}}</h2>
+                    <img class="object-fit-cover" src="{{ listings.post_image2.url }}">
+                </div>
+            </div>
+            <div id="third">
+                <h3>{{listings.date_posted|date:"F d, Y" }}</h3>
+                <h3>{{listings.author.profile.detail_location}}</h3>
+            </div>
+        </article> 
+    </a>
+
+    <style> 
+        a:hover { 
+            text-decoration: none; 
+        } 
+    </style> 
+    
+    {% endfor %}
 
 
 {% endblock content %}

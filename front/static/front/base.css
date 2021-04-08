@@ -101,6 +101,7 @@ nav {
     display: flex;
     align-items: center;
     color: red;
+  
 }
 
 #post h3 {
@@ -154,13 +155,10 @@ nav {
 
 }
 
-
-
-
-
-
-
-
+#testing {
+    width: 400px;
+    height: 350px;
+}
 
 
 

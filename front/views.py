@@ -15,7 +15,8 @@ import zipcodes
 
     #final_location = 10
 
-    #postings = {
+    #postings = { 
+        
         #'listings' : Post.objects.all(),
         #'final_location' : final_location
     #}
@@ -27,6 +28,29 @@ class PostListView(ListView):
     template_name = 'front/front.html'
     context_object_name = 'listings'
     ordering = ['-date_posted']
+
+
+
+class SearchView(ListView):
+    model = Post
+    template_name = 'front/about.html'
+    context_object_name = 'listings'
+    ordering = ['-date_posted']
+
+    
+    def get_queryset(self):
+       result = super(SearchView, self).get_queryset()
+       query = self.request.GET.get('search')
+       if query:
+          postresult = Post.objects.filter(title__contains=query)
+          result = postresult
+       else:
+           result = None
+       return result
+
+
+
+    
     
 
 class PostDetailView(DetailView):
@@ -87,28 +111,28 @@ def about(request):
 
     #current = request.user.profile.location
 
-    def get_ip_address(request):
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        return ip
+    #def get_ip_address(request):
+     #   x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+      #  if x_forwarded_for:
+       #     ip = x_forwarded_for.split(',')[0]
+        #else:
+         #   ip = request.META.get('REMOTE_ADDR')
+        #return ip
     
-    ip = get_ip_address(request)
-    loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
-    loc = get('https://ipapi.co/72.76.225.203/json/')#.format(ip))    
-    address = loc.json()
-    city = address['city']
-    region = address['region']
-    area = city + ", " + region
+    #ip = get_ip_address(request)
+    #loc_key = get('http://ipapi.co/json/?key=dhlDIr1TAg6GdxiKdfn8lVBOmEDOZlXVhPPqfIPKsmujFBXMu6')
+    #loc = get('https://ipapi.co/72.76.225.203/json/')#.format(ip))    
+    #address = loc.json()
+    #city = address['city']
+    #region = address['region']
+    #area = city + ", " + region
 
     
        
     number_of_users2 ={
         
-        'count' : x,
-        'location' : area
+        'count' : x
+        #'location' : area
         
     
     }
