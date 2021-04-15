@@ -24,7 +24,58 @@
             {% endif %}
             <h1>{{ object.location }}</h1>
             <img class="rounded-circle" src="{{ object.author.profile.image.url }}" height="200" width="200">
-            
-        </article>                                                    
+            <input type="hidden" id="hidden_lat" name="lat" value="{{object.author.profile.detail_lat}}">
+            <input type="hidden" id="hidden_lng" name="lng" value="{{object.author.profile.detail_lng}}">
+        </article>
+        
+        <div id="main_top">
+            <div id="main">
+              <div id="right">
+                <div id="map"></div>
+              </div>
+            </div>
+          </div>
+          
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA25FnRZPD1a0TQrNo46xYgavjrZnMuRWQ&callback=initMap&libraries=&v=weekly"
+          async>
+          </script>
+        
+            <style>
+                #main_top {
+                    margin-left: 100px;
+                }
+              #right {
+                height: 70%;
+                }
+              #main {
+                height: 400px;
+                }
+              #map {
+               height: 100%;
+               width: 900px;
+               }
+            </style>
+        
+            <script>
+              function initMap() {
+                var lat = +document.getElementById('hidden_lat').value   
+                var lng = +document.getElementById('hidden_lng').value
+                const map = new google.maps.Map(document.getElementById("map"), {
+                  zoom: 12,
+                  disableDefaultUI: true,
+                  gestureHandling: "none",
+                  zoomControl: false,
+                  center: { lat: lat, lng: lng },
+                  
+                });
+                const image = "https://assets.offerup.com/web/images/itemdetail/mapcircle.1bf8fc3f.png";
+                const beachMarker = new google.maps.Marker({
+                position: { lat: lat, lng: lng },
+                map,
+                icon: image,
+                });
+              }
+            </script>
+        
 {% endblock content %}
   

@@ -1,8 +1,76 @@
-  
-{% extends "front/base.html" %}
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% for listings in listings %}       
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'front/base.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+     <!-- animation-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    
+    <div class="navcontainer">
+
+        <nav id="navbar">
+            <div class="logo">
+                <h4 class="logohead"><a href="{% url 'front' %}">Test Site Only</a></h4>
+            </div>
+            <ul class='nav-links'>
+                <li>
+                    <a href="{% url 'front' %}">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'about' %}">Search</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'profile' %}">Profile</a>
+                </li>
+                <li>
+                    <a href="{% url 'post-create' %}">Create Post</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}">Login</a>
+                </li>
+                <li>
+                    <a href="{% url 'register' %}">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+         </nav>
+    
+         <div class="navdescription">
+            <div>
+                <h1 class="navdescriptionfirst animate__animated animate__fadeInDown ">Post</h1>
+            </div>
+            <div>
+                <h1 class="animate__animated animate__fadeInDown animate__delay-1s">Find</h1>
+            </div>
+            <div>
+                <h1 class="animate__animated animate__fadeInDown animate__delay-2s">Trade</h1>
+            </div>
+         </div>
+            <svg class="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 300" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(102, 252, 241, 1)" offset="0%"></stop><stop stop-color="rgba(31, 40, 51, 1)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,0L48,25C96,50,192,100,288,105C384,110,480,70,576,65C672,60,768,90,864,120C960,150,1056,180,1152,160C1248,140,1344,70,1440,40C1536,10,1632,20,1728,65C1824,110,1920,190,2016,205C2112,220,2208,170,2304,160C2400,150,2496,180,2592,165C2688,150,2784,90,2880,55C2976,20,3072,10,3168,45C3264,80,3360,160,3456,200C3552,240,3648,240,3744,240C3840,240,3936,240,4032,200C4128,160,4224,80,4320,70C4416,60,4512,120,4608,135C4704,150,4800,120,4896,90C4992,60,5088,30,5184,50C5280,70,5376,140,5472,175C5568,210,5664,210,5760,210C5856,210,5952,210,6048,195C6144,180,6240,150,6336,150C6432,150,6528,180,6624,185C6720,190,6816,170,6864,160L6912,150L6912,300L6864,300C6816,300,6720,300,6624,300C6528,300,6432,300,6336,300C6240,300,6144,300,6048,300C5952,300,5856,300,5760,300C5664,300,5568,300,5472,300C5376,300,5280,300,5184,300C5088,300,4992,300,4896,300C4800,300,4704,300,4608,300C4512,300,4416,300,4320,300C4224,300,4128,300,4032,300C3936,300,3840,300,3744,300C3648,300,3552,300,3456,300C3360,300,3264,300,3168,300C3072,300,2976,300,2880,300C2784,300,2688,300,2592,300C2496,300,2400,300,2304,300C2208,300,2112,300,2016,300C1920,300,1824,300,1728,300C1632,300,1536,300,1440,300C1344,300,1248,300,1152,300C1056,300,960,300,864,300C768,300,672,300,576,300C480,300,384,300,288,300C192,300,96,300,48,300L0,300Z"></path><defs><linearGradient id="sw-gradient-1" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(197, 198, 199, 1)" offset="0%"></stop><stop stop-color="rgba(197, 198, 199, 1)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 50px); opacity:0.9" fill="url(#sw-gradient-1)" d="M0,210L48,215C96,220,192,230,288,220C384,210,480,180,576,155C672,130,768,110,864,110C960,110,1056,130,1152,120C1248,110,1344,70,1440,65C1536,60,1632,90,1728,120C1824,150,1920,180,2016,200C2112,220,2208,230,2304,235C2400,240,2496,240,2592,235C2688,230,2784,220,2880,200C2976,180,3072,150,3168,130C3264,110,3360,100,3456,85C3552,70,3648,50,3744,50C3840,50,3936,70,4032,105C4128,140,4224,190,4320,215C4416,240,4512,240,4608,225C4704,210,4800,180,4896,145C4992,110,5088,70,5184,55C5280,40,5376,50,5472,90C5568,130,5664,200,5760,195C5856,190,5952,110,6048,85C6144,60,6240,90,6336,105C6432,120,6528,120,6624,115C6720,110,6816,100,6864,95L6912,90L6912,300L6864,300C6816,300,6720,300,6624,300C6528,300,6432,300,6336,300C6240,300,6144,300,6048,300C5952,300,5856,300,5760,300C5664,300,5568,300,5472,300C5376,300,5280,300,5184,300C5088,300,4992,300,4896,300C4800,300,4704,300,4608,300C4512,300,4416,300,4320,300C4224,300,4128,300,4032,300C3936,300,3840,300,3744,300C3648,300,3552,300,3456,300C3360,300,3264,300,3168,300C3072,300,2976,300,2880,300C2784,300,2688,300,2592,300C2496,300,2400,300,2304,300C2208,300,2112,300,2016,300C1920,300,1824,300,1728,300C1632,300,1536,300,1440,300C1344,300,1248,300,1152,300C1056,300,960,300,864,300C768,300,672,300,576,300C480,300,384,300,288,300C192,300,96,300,48,300L0,300Z"></path></svg>          
+        </div>
+         
+        <div class="container">
+            {% for listings in listings %}       
         <a href="{% url 'post-detail' listings.id %}">
             <article id="post">
                 <div id="flex">
@@ -31,5 +99,16 @@
             } 
         </style>
     {% endfor %}
-                                                
-{% endblock content %}
+        </div>
+        
+    
+    
+
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'front/app.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -12,44 +12,50 @@
     <link rel="stylesheet" href="{% static 'front/base.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+     <!-- animation-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <h4><a href="{% url 'front' %}">Test Site Only</a></h4>
+
+        <div id="navbar2">
+            <div class="logo2">
+                <h4 class="logohead2"><a href="{% url 'front' %}">Test Site Only</a></h4>
+            </div>
+            <ul class='nav-links2'>
+                <li>
+                    <a href="{% url 'front' %}">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'about' %}">Search</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'profile' %}">Profile</a>
+                </li>
+                <li>
+                    <a href="{% url 'post-create' %}">Create Post</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}">Login</a>
+                </li>
+                <li>
+                    <a href="{% url 'register' %}">Register</a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
-        <ul class='nav-links'>
-            <li>
-                <a href="{% url 'front' %}">Home</a>
-            </li>
-            <li>
-                <a href="{% url 'about' %}">Search</a>
-            </li>
-            {% if user.is_authenticated %}
-            <li>
-                <a href="{% url 'profile' %}">Profile</a>
-            </li>
-            <li>
-                <a href="{% url 'post-create' %}">Create Post</a>
-            </li>
-            <li>
-                <a href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li>
-                <a href="{% url 'login' %}">Login</a>
-            </li>
-            <li>
-                <a href="{% url 'register' %}">Register</a>
-            </li>
-            {% endif %}
-        </ul>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </nav>
+    
+         
+         
     
     <div class="container">
         {% if messages %}
